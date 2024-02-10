@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, ReactEventHandler, TableHTMLAttributes, useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import './App.css';
 
 
@@ -29,11 +29,11 @@ function App() {
 
 
   function handleClick(event: ChangeEvent) {
-    const { classList, valueAsNumber } = event.target as HTMLInputElement
+    const { valueAsNumber } = event.target as HTMLInputElement
     // update Value
     setGridNum(valueAsNumber)
     // get the globle grid value from CSS 
-    const b = getComputedStyle(document.documentElement).getPropertyValue("--gridNum");
+    // const b = getComputedStyle(document.documentElement).getPropertyValue("--gridNum");
     // set the value to the latest value
     document.documentElement.style.setProperty('--gridNum', valueAsNumber.toString());
     // Get All the cell element and update the white the backgroud color to white for reset 
@@ -46,7 +46,7 @@ function App() {
   function handleOver(event: MouseEvent) {
     setLoading(true);
     // console.log("EVENT: ", event, colors)
-    const { id, innerHTML, style, classList } = event.target as HTMLDivElement
+    const { classList } = event.target as HTMLDivElement
     // Get a random number for random color 
     // style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
