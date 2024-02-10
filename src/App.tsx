@@ -68,7 +68,7 @@ function App() {
 
   function handleSelect(event: MouseEvent) {
     const { id } = event.target as HTMLTableCellElement
-    console.log("Event", id);
+    // console.log("Event", id);
     setSelColor(id);
   }
 
@@ -78,20 +78,22 @@ function App() {
     var bg = classList.value.match(/bg-\w+(-\d+)*/g);
 
     if (bg) {
-      console.log("BG: ", bg[0]);
+      // console.log("BG: ", bg[0]);
       classList.remove(bg[0])
     }
 
+    if (color === "reset") {
 
-    if (random) {
-      newColor = "bg-" + colors[Math.floor(Math.random() * colors.length)] + "-" + ((Math.floor(Math.random() * 9)) + 1) * 100;
-    } else {
-      newColor = color === "reset" ? "bg-white" : `bg-${color}-500`;
+      newColor = "bg-white"
+    }
+    else {
+      newColor = random ? "bg-" + colors[Math.floor(Math.random() * colors.length)] + "-" + ((Math.floor(Math.random() * 9)) + 1) * 100 : `bg-${color}-500`;
     }
 
 
+
     classList.add(newColor);
-    console.log("Change", classList);
+    // console.log("Change", classList);
   }
 
   return (
